@@ -151,7 +151,7 @@ const Contact = () => {
       name: 'LinkedIn',
       icon: <FaLinkedin />,
       url: 'https://www.linkedin.com/in/robiya-jalilova-12535a37b/',
-      color: 'from-[#0A66C2] to-[#004182]', 
+      color: 'from-[#0A66C2] to-[#004182]',
       hoverColor: 'hover:shadow-[#0A66C2]/40'
     }
   ];
@@ -183,7 +183,7 @@ const Contact = () => {
             <span className="text-white">TOUCH</span>
           </h2>
           <p className="text-xl text-slate-400 font-cascadia">
-            Mari berkolaborasi dan ciptakan sesuatu yang amazing!
+            Let's collaborate and create something amazing!
           </p>
 
           {/* Admin Button - positioned top right */}
@@ -220,8 +220,8 @@ const Contact = () => {
                     <FaPaperPlane className="text-white text-xl" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">Hubungi Saya</h3>
-                    <p className="text-slate-400">Ada yang ingin didiskusikan? Kirim pesan ke saya!</p>
+                    <h3 className="text-2xl font-bold text-white">Contact Me</h3>
+                    <p className="text-slate-400">Anything you want to discuss? Send me a message!</p>
                   </div>
                 </div>
 
@@ -231,7 +231,7 @@ const Contact = () => {
                       <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <input
                         type="text"
-                        placeholder="Nama Anda"
+                        placeholder="Your Name"
                         value={contactForm.name}
                         onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
                         className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
@@ -245,7 +245,7 @@ const Contact = () => {
                       <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <input
                         type="email"
-                        placeholder="Email Anda"
+                        placeholder="Your Email"
                         value={contactForm.email}
                         onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
                         className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
@@ -258,7 +258,7 @@ const Contact = () => {
                     <div className="relative">
                       <FaComment className="absolute left-4 top-6 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <textarea
-                        placeholder="Pesan Anda"
+                        placeholder="Your Message"
                         rows="4"
                         value={contactForm.message}
                         onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
@@ -280,7 +280,7 @@ const Contact = () => {
                     ) : (
                       <>
                         <FaPaperPlane />
-                        <span>Kirim Pesan</span>
+                        <span>Send message</span>
                       </>
                     )}
                   </motion.button>
@@ -291,7 +291,7 @@ const Contact = () => {
             {/* Divider */}
             <div className="flex items-center gap-4">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
-              <span className="text-slate-400 font-semibold">atau</span>
+              <span className="text-slate-400 font-semibold">or</span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
             </div>
 
@@ -475,7 +475,7 @@ const Contact = () => {
                 {comments.length === 0 && (
                   <div className="text-center py-12 text-slate-400">
                     <FaComment className="text-4xl mx-auto mb-4 opacity-50" />
-                    <p>Belum ada komentar. Jadilah yang pertama!</p>
+                    <p>No comments yet. Be the first to comment!</p>
                   </div>
                 )}
               </div>
