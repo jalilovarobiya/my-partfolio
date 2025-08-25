@@ -24,44 +24,44 @@ import { MdStorage } from 'react-icons/md';
 // DATA PROYEK (CONTOH)
 // ===================================
 const dummyProjects = [
+  // {
+  //   title: "Portfolio v2",
+  //   description: "Website portofolio pribadi yang dibangun dengan React, Next.js, dan Tailwind CSS, di-deploy di Vercel.",
+  //   tech: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
+  //   link: "https://github.com/username/portfolio",
+  //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+  //   category: "Mobile apps",
+  // },
   {
-    title: "Portfolio v2",
-    description: "Website portofolio pribadi yang dibangun dengan React, Next.js, dan Tailwind CSS, di-deploy di Vercel.",
-    tech: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
-    link: "https://github.com/username/portfolio",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-    category: "Web/Apps",
-  },
-  {
-    title: "E-Commerce API",
-    description: "RESTful API untuk platform e-commerce dengan fitur otentikasi, manajemen produk, dan transaksi.",
-    tech: ["Node.js", "Express", "MongoDB", "JWT"],
-    link: "https://github.com/username/ecommerce-api",
+    title: "ELARO",
+    description: "A modern e-commerce mobile application built with Flutter, featuring an intuitive UI, secure payments, and seamless shopping experience.",
+    tech: ["Flutter", "Dart", "Firebase"],
+    link: "https://play.google.com/store/apps/details?id=uz.elaro.elaro&hl=ru",
     image: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=2072&auto=format&fit=crop",
-    category: "Web/Apps",
+    category: "Mobile apps",
   },
+  // {
+  //   title: "UI Design System",
+  //   description: "Merancang komponen UI yang reusable dan konsisten untuk aplikasi web menggunakan Figma.",
+  //   tech: ["Figma", "Storybook"],
+  //   link: "#",
+  //   image: "https://images.unsplash.com/photo-1600132806378-62402124d9e0?q=80&w=2070&auto=format&fit=crop",
+  //   category: "Mobile apps",
+  // },
+  // {
+  //   title: "3D Product Visualization",
+  //   description: "Desain 3D interaktif untuk showcase produk menggunakan Spline dan Blender.",
+  //   tech: ["Spline", "Blender"],
+  //   link: "#",
+  //   image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
+  //   category: "3D Design",
+  // },
   {
-    title: "UI Design System",
-    description: "Merancang komponen UI yang reusable dan konsisten untuk aplikasi web menggunakan Figma.",
-    tech: ["Figma", "Storybook"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1600132806378-62402124d9e0?q=80&w=2070&auto=format&fit=crop",
-    category: "Web/Apps",
-  },
-  {
-    title: "3D Product Visualization",
-    description: "Desain 3D interaktif untuk showcase produk menggunakan Spline dan Blender.",
-    tech: ["Spline", "Blender"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
-    category: "3D Design",
-  },
-  {
-    title: "Animated 3D Landing",
-    description: "Landing page dengan elemen 3D animasi untuk branding modern.",
-    tech: ["Spline", "Three.js"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=2070&auto=format&fit=crop",
+    title: "Modern 3D Web Experience",
+    description: "Modern landing page with interactive 3D animations created in Figma and Spline.",
+    tech: ["Spline", "Figma Design"],
+    link: "https://yellow-cherry-8350.animaapp.io/",
+    image: "/images/3d_design.jpg",
     category: "3D Design",
   },
 ];
@@ -370,7 +370,7 @@ const ProjectCard = ({ project }) => {
 // ===================================
 function ProjectSection() {
   const [activeTab, setActiveTab] = useState('Projects');
-  const [projectCategory, setProjectCategory] = useState('Web/Apps');
+  const [projectCategory, setProjectCategory] = useState('Mobile apps');
   const [previewCertificate, setPreviewCertificate] = useState(null);
   const { hideNavbar, showNavbar } = useNavbar();
 
@@ -486,7 +486,7 @@ function ProjectSection() {
               {activeTab === 'Projects' && (
                 <>
                   <div className="flex justify-center gap-4 mb-8">
-                    <button className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === 'Web/Apps' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-cyan-500/10 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('Web/Apps')}>Web/Apps</button>
+                    <button className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === 'Mobile apps' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-cyan-500/10 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('Mobile apps')}>Mobile apps</button>
                     <button className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === '3D Design' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-cyan-500/10 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('3D Design')}>3D Design</button>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
