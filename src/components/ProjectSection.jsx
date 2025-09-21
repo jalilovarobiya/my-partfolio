@@ -1,4 +1,3 @@
-// src/components/ProjectSection.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -20,18 +19,8 @@ import { SiFirebase, SiSqlite, SiHiveBlockchain } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa";
 import { MdStorage } from 'react-icons/md';
 
-// ===================================
-// DATA PROYEK (CONTOH)
-// ===================================
 const dummyProjects = [
-  // {
-  //   title: "Portfolio v2",
-  //   description: "Website portofolio pribadi yang dibangun dengan React, Next.js, dan Tailwind CSS, di-deploy di Vercel.",
-  //   tech: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
-  //   link: "https://github.com/username/portfolio",
-  //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-  //   category: "Mobile apps",
-  // },
+
   {
     title: "ELARO",
     description: "A modern e-commerce mobile application built with Flutter, featuring an intuitive UI, secure payments, and seamless shopping experience.",
@@ -40,22 +29,7 @@ const dummyProjects = [
     image: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=2072&auto=format&fit=crop",
     category: "Mobile apps",
   },
-  // {
-  //   title: "UI Design System",
-  //   description: "Merancang komponen UI yang reusable dan konsisten untuk aplikasi web menggunakan Figma.",
-  //   tech: ["Figma", "Storybook"],
-  //   link: "#",
-  //   image: "https://images.unsplash.com/photo-1600132806378-62402124d9e0?q=80&w=2070&auto=format&fit=crop",
-  //   category: "Mobile apps",
-  // },
-  // {
-  //   title: "3D Product Visualization",
-  //   description: "Desain 3D interaktif untuk showcase produk menggunakan Spline dan Blender.",
-  //   tech: ["Spline", "Blender"],
-  //   link: "#",
-  //   image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
-  //   category: "3D Design",
-  // },
+
   {
     title: "Modern 3D Web Experience",
     description: "Modern landing page with interactive 3D animations created in Figma and Spline.",
@@ -66,9 +40,6 @@ const dummyProjects = [
   },
 ];
 
-// ===================================
-// DATA SERTIFIKAT Robiya Jalilova
-// ===================================
 const userCertificates = [
   {
     title: "Flutter Mobile Programming",
@@ -91,90 +62,7 @@ const userCertificates = [
     link: "/certificates/coursera1.pdf",
     image: "/certificate-images/coursera2.png",
   },
-  // {
-  //   title: "Belajar Dasar Pemrograman JavaScript",
-  //   issuer: "Dicoding Indonesia",
-  //   date: "Des 2024",
-  //   link: "/certificates/Belajar Dasar Pemrograman JavaScript.pdf",
-  //   image: "/certificate-images/Belajar Dasar Pemrograman JavaScript.jpg",
-  // },
-  // {
-  //   title: "Junior Web Developer (BNSP)",
-  //   issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-  //   date: "Sep 2024",
-  //   link: "/certificates/SERTIFIKAT BNSP JUNIOR WEB DEVELOPER Robiya Jalilova.jpeg",
-  //   image: "/certificate-images/SERTIFIKAT BNSP JUNIOR WEB DEVELOPER Robiya Jalilova.jpg",
-  // },
-  // {
-  //   title: "Belajar Membuat Front-End Web untuk Pemula",
-  //   issuer: "Dicoding Indonesia",
-  //   date: "Des 2024",
-  //   link: "/certificates/Belajar Membuat Front-End Web untuk Pemula.pdf",
-  //   image: "/certificate-images/Belajar Membuat Front-End Web untuk Pemula.jpg",
-  // },
-  // {
-  //   title: "Operator Komputer Madya (BNSP)",
-  //   issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-  //   date: "Des 2024",
-  //   link: "/certificates/Operator Komputer Madya BNSP.jpeg",
-  //   image: "/certificate-images/Operator Komputer Madya BNSP.jpg",
-  // },
-  // {
-  //   title: "Belajar Dasar Data Science",
-  //   issuer: "Dicoding Indonesia",
-  //   date: "Okt 2024",
-  //   link: "/certificates/Belajar Dasar Data Science.pdf",
-  //   image: "/certificate-images/Belajar Dasar Data Science.jpg",
-  // },
-  // {
-  //   title: "Belajar Dasar Structured Query Language (SQL)",
-  //   issuer: "Dicoding Indonesia",
-  //   date: "Okt 2024",
-  //   link: "/certificates/Belajar Dasar Structured Query Language (SQL).pdf",
-  //   image: "/certificate-images/Belajar Dasar Structured Query Language (SQL).jpg",
-  // },
-  // {
-  //   title: "Belajar Dasar AI",
-  //   issuer: "Dicoding Indonesia",
-  //   date: "Sep 2024",
-  //   link: "/certificates/Belajar Dasar AI.pdf",
-  //   image: "/certificate-images/Belajar Dasar AI.jpg",
-  // },
-  // {
-  //   title: "Belajar Dasar Manajemen Proyek",
-  //   issuer: "Dicoding Indonesia",
-  //   date: "Sep 2024",
-  //   link: "/certificates/Belajar Dasar Manajemen Proyek.pdf",
-  //   image: "/certificate-images/Belajar Dasar Manajemen Proyek.jpg",
-  // },
-  // {
-  //   title: "Operator Komputer Madya (VSGA)",
-  //   issuer: "Digital Talent Scholarship",
-  //   date: "Agu 2024",
-  //   link: "/certificates/Operator Komputer Madya VSGA.pdf",
-  //   image: "/certificate-images/Operator Komputer Madya VSGA.jpg",
-  // },
-  // {
-  //   title: "Junior Web Developer (VSGA)",
-  //   issuer: "Kominfo",
-  //   date: "Jul 2024",
-  //   link: "/certificates/Junior Web Developer VSGA.pdf",
-  //   image: "/certificate-images/Junior Web Developer VSGA.jpg",
-  // },
-  // {
-  //   title: "Java Fundamentals",
-  //   issuer: "Oracle",
-  //   date: "Jun 2024",
-  //   link: "/certificates/JAVA FUNDAMENTALS.pdf",
-  //   image: "/certificate-images/JAVA FUNDAMENTALS.jpg",
-  // },
-  // {
-  //   title: "Belajar Dasar Pemrograman Web",
-  //   issuer: "Dicoding Indonesia",
-  //   date: "Nov 2023",
-  //   link: "/certificates/Belajar Dasar Pemrograman Web.pdf",
-  //   image: "/certificate-images/Belajar Dasar Pemrograman Web.jpg",
-  // },
+
 ];
 
 const techStack = {
@@ -186,10 +74,6 @@ const techStack = {
 
 
   ],
-  // backend: [
-  //   { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
-  //   { name: "Express", icon: <SiExpress className="text-white" /> },
-  // ],
   database: [
     { name: "Firebase Firestore", icon: <SiFirebase className="text-[#FFCA28]" /> },
     { name: "Hive", icon: <SiHiveBlockchain className="text-[#FF7A00]" /> },
@@ -206,9 +90,6 @@ const techStack = {
   ],
 };
 
-// ===================================
-// HELPER & ANIMATION COMPONENTS
-// ===================================
 const LineShadowText = ({ children, className, shadowColor = "#4079ff", ...props }) => {
   return (
     <motion.span
@@ -222,9 +103,6 @@ const LineShadowText = ({ children, className, shadowColor = "#4079ff", ...props
   );
 };
 
-// ===================================
-// KOMPONEN KARTU SERTIFIKAT
-// ===================================
 const CertificateCard = ({ cert, onClick }) => {
   return (
     <motion.div
@@ -274,9 +152,6 @@ const CertificateCard = ({ cert, onClick }) => {
   );
 };
 
-// ===================================
-// KOMPONEN PREVIEW MODAL SERTIFIKAT
-// ===================================
 const CertificatePreviewModal = ({ certificate, onClose }) => {
   if (!certificate) return null;
 
@@ -328,9 +203,6 @@ const CertificatePreviewModal = ({ certificate, onClose }) => {
   );
 };
 
-// ===================================
-// KOMPONEN KARTU PROYEK
-// ===================================
 const ProjectCard = ({ project }) => {
   const techIcons = {
     "Next.js": <SiNextdotjs />, "React": <FaReact />, "TailwindCSS": <SiTailwindcss />,
@@ -365,19 +237,14 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-// ===================================
-// KOMPONEN UTAMA SECTION PROJECT
-// ===================================
 function ProjectSection() {
   const [activeTab, setActiveTab] = useState('Projects');
   const [projectCategory, setProjectCategory] = useState('Mobile apps');
   const [previewCertificate, setPreviewCertificate] = useState(null);
   const { hideNavbar, showNavbar } = useNavbar();
 
-  // === CHANGE START: State dan konstanta untuk Show More/Less ===
   const INITIAL_CERTIFICATES_TO_SHOW = 6;
   const [visibleCertificatesCount, setVisibleCertificatesCount] = useState(INITIAL_CERTIFICATES_TO_SHOW);
-  // === CHANGE END ===
 
   useEffect(() => {
     if (previewCertificate) {
@@ -403,7 +270,6 @@ function ProjectSection() {
     (p) => p.category === projectCategory
   );
 
-  // === CHANGE START: Handler untuk tombol Show More/Less ===
   const handleShowMore = () => {
     setVisibleCertificatesCount(userCertificates.length);
   };
@@ -411,7 +277,6 @@ function ProjectSection() {
   const handleShowLess = () => {
     setVisibleCertificatesCount(INITIAL_CERTIFICATES_TO_SHOW);
   };
-  // === CHANGE END ===
 
   return (
     <section id="project" className="py-20">

@@ -126,9 +126,6 @@ function App() {
                     </span>
                   </VelocityScroll>
                 </div>
-                <p className="text-lg text-cyan-200/70 mt-2 font-cascadia px-1 mb-20">
-                  ✧ Passionate about coding and creative technology ✧
-                </p>
               </motion.div>
 
               <div className="flex flex-col md:flex-row items-center justify-center">
@@ -212,12 +209,6 @@ function App() {
 
             {/* BAGIAN CONTACT */}
             <Contact />
-
-            {/* FOOTER */}
-            <footer className="py-8 text-center text-gray-400">
-              <div className="text-sm">© {new Date().getFullYear()} Robiya Jalilova. All rights reserved.</div>
-              <div className="text-xs mt-2">Built with <span className="text-red-500">♥</span> using React, Tailwind CSS, and Framer Motion.</div>
-            </footer>
           </main>
         </div>
       </NavbarProvider>
