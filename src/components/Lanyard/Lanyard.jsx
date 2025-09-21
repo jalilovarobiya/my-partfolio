@@ -6,7 +6,7 @@ import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
-import Robiya from '../../assets/images/Robiya.jpg';
+// import Robiya from '../../assets/images/Robiya.jpg';
 
 // 🧩 Ganti import glb menjadi path dari public/
 const cardGLB = '/models/card.glb';
@@ -118,9 +118,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
             onPointerOut={() => hover(false)}
             onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
             onPointerDown={(e) => (e.target.setPointerCapture(e.pointerId), drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation()))))}>
-            {/* <mesh
+            <mesh
               geometry={nodes.card.geometry}
-              scale={[-0.9, 1, 0.9]}
+            // scale={[-0.9, 1, 0.9]}
             // rotation={[0, Math.PI, 0]}
             >
               <meshPhysicalMaterial
@@ -130,7 +130,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
                 roughness={0.9}
                 metalness={0.8}
               />
-            </mesh> */}
+            </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
           </group>

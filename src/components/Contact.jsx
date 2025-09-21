@@ -18,11 +18,9 @@ import AdminMessages from './AdminMessages';
 import AdminLogin from './AdminLogin';
 import { useAdmin } from '../contexts/AdminContext';
 
-// JSON file untuk menyimpan comments
 const COMMENTS_FILE = '/comments.json';
 
 const Contact = () => {
-  // States untuk contact form
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -30,7 +28,6 @@ const Contact = () => {
   });
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
 
-  // States untuk comments
   const [commentForm, setCommentForm] = useState({
     name: '',
     message: '',
@@ -44,7 +41,6 @@ const Contact = () => {
 
   const { isAuthenticated } = useAdmin();
 
-  // Load comments dari localStorage (simulasi JSON file)
   useEffect(() => {
     const savedComments = localStorage.getItem('portfolioComments');
     if (savedComments) {
@@ -52,12 +48,10 @@ const Contact = () => {
     }
   }, []);
 
-  // Handle contact form
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     setIsSubmittingContact(true);
 
-    // Save message to localStorage (simulasi JSON file)
     const newMessage = {
       id: Date.now(),
       name: contactForm.name,
@@ -80,7 +74,6 @@ const Contact = () => {
     setIsSubmittingContact(false);
   };
 
-  // Handle photo upload
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -96,7 +89,6 @@ const Contact = () => {
     }
   };
 
-  // Handle comment submit
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     if (!commentForm.name.trim() || !commentForm.message.trim()) return;
@@ -120,7 +112,6 @@ const Contact = () => {
     setIsSubmittingComment(false);
   };
 
-  // Handle like comment
   const handleLikeComment = (commentId) => {
     const updatedComments = comments.map(comment =>
       comment.id === commentId
