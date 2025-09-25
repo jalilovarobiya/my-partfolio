@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaLock, 
-  FaUser, 
-  FaEye, 
-  FaEyeSlash, 
+import {
+  FaLock,
+  FaUser,
+  FaEye,
+  FaEyeSlash,
   FaShieldAlt,
   FaTimes,
   FaExclamationTriangle,
@@ -30,7 +30,7 @@ const AdminLogin = ({ isOpen, onClose, onSuccess }) => {
       const updateTimer = () => {
         const remaining = Math.max(0, Math.ceil((lockoutTime - new Date().getTime()) / 1000));
         setLockoutTimer(remaining);
-        
+
         if (remaining <= 0) {
           setLockoutTimer(0);
           setError('');
@@ -89,7 +89,7 @@ const AdminLogin = ({ isOpen, onClose, onSuccess }) => {
         {/* Header */}
         <div className="relative p-8 text-center">
           <div className="absolute top-4 right-4">
-            <button 
+            <button
               onClick={handleClose}
               className="bg-red-500/20 hover:bg-red-500/30 backdrop-blur-md p-2 rounded-full border border-red-400/30 transition-all duration-300 group"
             >
@@ -98,11 +98,11 @@ const AdminLogin = ({ isOpen, onClose, onSuccess }) => {
           </div>
 
           <div className="flex justify-center mb-6">
-            <div className="p-4 bg-gradient-to-r from-cyan-600 to-emerald-600 rounded-full">
+            <div className="p-4 bg-gradient-to-r from-gray-600 to-emerald-600 rounded-full">
               <FaShieldAlt className="text-white text-3xl" />
             </div>
           </div>
-          
+
           <h2 className="text-2xl font-bold text-white mb-2">Admin Login</h2>
           <p className="text-slate-400">Enter your credentials to access admin panel</p>
         </div>
@@ -113,14 +113,14 @@ const AdminLogin = ({ isOpen, onClose, onSuccess }) => {
             {/* Username Field */}
             <div className="group">
               <div className="relative">
-                <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
+                <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-gray-400 transition-colors duration-300" />
                 <input
                   type="text"
                   placeholder="Username"
                   value={formData.username}
                   onChange={(e) => setFormData(prev => ({ ...prev, username: e.target.value }))}
                   disabled={isLocked}
-                  className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   required
                 />
               </div>
@@ -129,21 +129,21 @@ const AdminLogin = ({ isOpen, onClose, onSuccess }) => {
             {/* Password Field */}
             <div className="group">
               <div className="relative">
-                <FaLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
+                <FaLock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-gray-400 transition-colors duration-300" />
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   value={formData.password}
                   onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
                   disabled={isLocked}
-                  className="w-full pl-12 pr-12 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full pl-12 pr-12 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   disabled={isLocked}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-cyan-400 transition-colors duration-300 disabled:opacity-50"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-gray-400 transition-colors duration-300 disabled:opacity-50"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
@@ -200,7 +200,7 @@ const AdminLogin = ({ isOpen, onClose, onSuccess }) => {
               disabled={isSubmitting || isLocked}
               whileHover={{ scale: isSubmitting || isLocked ? 1 : 1.02 }}
               whileTap={{ scale: isSubmitting || isLocked ? 1 : 0.98 }}
-              className="w-full bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-cyan-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-gray-600 to-emerald-600 hover:from-gray-500 hover:to-emerald-500 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-gray-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

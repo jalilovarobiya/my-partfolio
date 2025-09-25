@@ -1,4 +1,3 @@
-// src/components/DotGrid.jsx
 'use client';
 import { useRef, useEffect, useCallback, useMemo } from "react";
 import { gsap } from "gsap";
@@ -6,7 +5,6 @@ import { InertiaPlugin } from "gsap/InertiaPlugin";
 
 gsap.registerPlugin(InertiaPlugin);
 
-// Fungsi utilitas untuk membatasi frekuensi pemanggilan fungsi (throttle)
 const throttle = (func, limit) => {
   let lastCall = 0;
   return function (...args) {
@@ -18,7 +16,6 @@ const throttle = (func, limit) => {
   };
 };
 
-// Fungsi untuk mengonversi warna hex ke RGB
 function hexToRgb(hex) {
   const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
   if (!m) return { r: 0, g: 0, b: 0 };
@@ -32,8 +29,8 @@ function hexToRgb(hex) {
 const DotGrid = ({
   dotSize = 5,
   gap = 25,
-  baseColor = "#060010",
-  activeColor = "#00ffdc",
+  baseColor = "#FFFFFF",
+  activeColor = "hsl(350,100%,88%)",
   proximity = 120,
   shockRadius = 250,
   shockStrength = 5,
@@ -48,7 +45,6 @@ const DotGrid = ({
   const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
   const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor]);
 
-  // Membuat path lingkaran untuk efisiensi rendering
   const circlePath = useMemo(() => {
     if (typeof window === "undefined" || !window.Path2D) return null;
     const p = new Path2D();
@@ -56,7 +52,6 @@ const DotGrid = ({
     return p;
   }, [dotSize]);
 
-  // Fungsi untuk membangun grid titik
   const buildGrid = useCallback(() => {
     const wrap = wrapperRef.current;
     const canvas = canvasRef.current;
@@ -92,7 +87,7 @@ const DotGrid = ({
     dotsRef.current = dots;
   }, [dotSize, gap]);
 
-  // Efek render utama (loop animasi)
+
   useEffect(() => {
     if (!circlePath) return;
     let rafId;
@@ -137,7 +132,7 @@ const DotGrid = ({
     return () => cancelAnimationFrame(rafId);
   }, [proximity, activeRgb, baseRgb, circlePath]);
 
-  // Membangun grid saat komponen dimuat dan saat ukuran jendela berubah
+
   useEffect(() => {
     buildGrid();
     let ro = null;
@@ -153,58 +148,58 @@ const DotGrid = ({
     };
   }, [buildGrid]);
 
-  // Menangani interaksi mouse
+
   useEffect(() => {
     const onMove = (e) => {
-        if (!canvasRef.current) return;
-        const rect = canvasRef.current.getBoundingClientRect();
-        pointerRef.current.x = e.clientX - rect.left;
-        pointerRef.current.y = e.clientY - rect.top;
+      if (!canvasRef.current) return;
+      const rect = canvasRef.current.getBoundingClientRect();
+      pointerRef.current.x = e.clientX - rect.left;
+      pointerRef.current.y = e.clientY - rect.top;
     };
 
     const onClick = (e) => {
-        if (!canvasRef.current) return;
-        const rect = canvasRef.current.getBoundingClientRect();
-        const cx = e.clientX - rect.left;
-        const cy = e.clientY - rect.top;
-        for (const dot of dotsRef.current) {
-            const dist = Math.hypot(dot.cx - cx, dot.cy - cy);
-            if (dist < shockRadius && !dot._inertiaApplied) {
-                dot._inertiaApplied = true;
-                gsap.killTweensOf(dot);
-                const falloff = Math.max(0, 1 - dist / shockRadius);
-                const pushX = (dot.cx - cx) * shockStrength * falloff;
-                const pushY = (dot.cy - cy) * shockStrength * falloff;
-                
-                gsap.to(dot, {
-                    xOffset: pushX,
-                    yOffset: pushY,
-                    duration: 0.1, // Short duration to apply the push
-                    onComplete: () => {
-                        gsap.to(dot, {
-                            xOffset: 0,
-                            yOffset: 0,
-                            duration: returnDuration,
-                            ease: "elastic.out(1,0.75)",
-                            onComplete: () => {
-                                dot._inertiaApplied = false;
-                            }
-                        });
-                    }
-                });
+      if (!canvasRef.current) return;
+      const rect = canvasRef.current.getBoundingClientRect();
+      const cx = e.clientX - rect.left;
+      const cy = e.clientY - rect.top;
+      for (const dot of dotsRef.current) {
+        const dist = Math.hypot(dot.cx - cx, dot.cy - cy);
+        if (dist < shockRadius && !dot._inertiaApplied) {
+          dot._inertiaApplied = true;
+          gsap.killTweensOf(dot);
+          const falloff = Math.max(0, 1 - dist / shockRadius);
+          const pushX = (dot.cx - cx) * shockStrength * falloff;
+          const pushY = (dot.cy - cy) * shockStrength * falloff;
+
+          gsap.to(dot, {
+            xOffset: pushX,
+            yOffset: pushY,
+            duration: 0.1,
+            onComplete: () => {
+              gsap.to(dot, {
+                xOffset: 0,
+                yOffset: 0,
+                duration: returnDuration,
+                ease: "elastic.out(1,0.75)",
+                onComplete: () => {
+                  dot._inertiaApplied = false;
+                }
+              });
             }
+          });
         }
+      }
     };
 
-    const throttledMove = throttle(onMove, 16); // Throttle 60fps
+    const throttledMove = throttle(onMove, 16);
     window.addEventListener("mousemove", throttledMove, { passive: true });
     window.addEventListener("click", onClick);
 
     return () => {
-        window.removeEventListener("mousemove", throttledMove);
-        window.removeEventListener("click", onClick);
+      window.removeEventListener("mousemove", throttledMove);
+      window.removeEventListener("click", onClick);
     };
-}, [resistance, returnDuration, shockRadius, shockStrength]);
+  }, [resistance, returnDuration, shockRadius, shockStrength]);
 
 
   return (

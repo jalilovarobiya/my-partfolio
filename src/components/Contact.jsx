@@ -36,8 +36,8 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-transparent to-cyan-900/10"></div>
-      <div className="absolute top-20 left-10 w-20 h-20 bg-cyan-500/10 rounded-full blur-xl animate-pulse"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/20 via-transparent to-gray-900/10"></div>
+      <div className="absolute top-20 left-10 w-20 h-20 bg-gray-500/10 rounded-full blur-xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-xl animate-pulse delay-1000"></div>
       <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-purple-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
 
@@ -50,7 +50,7 @@ const Contact = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative group max-w-md" // mx-auto olib tashlandi
         >
-          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-gray-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
           <div className="relative bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50">
             <h3 className="text-2xl font-bold text-white mb-6 text-center">Connect With Me</h3>
             <div className="grid gap-4">

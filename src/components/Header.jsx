@@ -10,6 +10,9 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { isNavbarVisible } = useNavbar();
 
+  const BASE_COLOR = "#FF85A2"; // galatro pushti
+  const SCROLLED_COLOR = "rgba(255, 200, 220, 0.5)"; // scroll effekti
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -25,7 +28,7 @@ const Header = () => {
         className="relative block text-white font-[Rubik] font-bold text-base tracking-wider py-2 transition-transform duration-300 hover:scale-110 group"
       >
         {children}
-        <span className="absolute bottom-1 left-0 block h-[2px] w-0 bg-[#00ffdc] transition-all duration-500 group-hover:w-full"></span>
+        <span className="absolute bottom-1 left-0 block h-[2px] w-0 bg-[#FFFFFF] transition-all duration-500 group-hover:w-full"></span>
       </a>
     </li>
   );
@@ -41,52 +44,27 @@ const Header = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="fixed top-0 left-0 w-full z-50 pointer-events-none"
           >
-            {/* Drop Shadow Gradient Animated */}
-            {!isScrolled && (
-              <div
-                className="pointer-events-none absolute left-0 right-0 z-10"
-                style={{
-                  top: '0',
-                  height: '90px',
-                  WebkitClipPath: CLIP_PATH,
-                  clipPath: CLIP_PATH,
-                  background: 'linear-gradient(90deg, #00fff0, #00ffdc, #4079ff, #40ffaa, #00fff0)',
-                  backgroundSize: '300% 100%',
-                  animation: 'gradientShadowMove 6s linear infinite',
-                  opacity: 1,
-                  filter: 'drop-shadow(0 16px 24px rgba(64,255,170,0.35))',
-                }}
-              ></div>
-            )}
-
-            {/* Navbar */}
             <header
-              className={`pt-3 pb-3 relative z-20 pointer-events-auto transition-all duration-300
-                ${isScrolled ? "glassmorphism-header" : "bg-[#11142F]"}`}
+              className="pt-3 pb-3 relative z-20 pointer-events-auto transition-all duration-500 ease-out"
               style={{
                 WebkitClipPath: CLIP_PATH,
                 clipPath: CLIP_PATH,
-                ...(isScrolled
-                  ? {
-                    backgroundColor: "rgba(17, 20, 47, 0.71)",
-                    backdropFilter: "blur(7px) saturate(180%)",
-                    WebkitBackdropFilter: "blur(7px) saturate(180%)",
-                    border: "1px solid rgba(255,255,255,0.125)",
-                  }
-                  : {}
-                ),
+                backgroundColor: isScrolled ? SCROLLED_COLOR : BASE_COLOR,
+                backdropFilter: isScrolled ? "blur(7px) saturate(180%)" : "none",
+                WebkitBackdropFilter: isScrolled ? "blur(7px) saturate(180%)" : "none",
+                border: isScrolled ? "1px solid rgba(255, 200, 220, 0.3)" : "none",
               }}
             >
               <nav className="container mx-auto flex items-center justify-between flex-wrap pb-4 px-4">
                 <div className="w-full flex items-center justify-between md:hidden">
                   <a href="#home" className="flex items-center gap-3">
                     <div>
-                      <h1 className="font-moderniz text-sm text-[#00ffdc] whitespace-nowrap">Robiya Jalilova</h1>
+                      <h1 className="font-moderniz text-sm text-white whitespace-nowrap">Robiya Jalilova</h1>
                       <p
                         className="font-moderniz text-[9px] text-[#000754]"
                         style={{
                           textShadow:
-                            '0.5px 0.5px 0 #00ffdc, -0.5px -0.5px 0 #00ffdc, 0.5px -0.5px 0 #00ffdc, -0.5px 0.5px 0 #00ffdc',
+                            '0.5px 0.5px 0 #FFFFFF, -0.5px -0.5px 0 #FFFFFF, 0.5px -0.5px 0 #FFFFFF, -0.5px 0.5px 0 #FFFFFF',
                         }}
                       >
                         Let's see the awesome Experience
@@ -95,7 +73,7 @@ const Header = () => {
                   </a>
                   <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="text-[#00ffdc] text-3xl pointer-events-auto"
+                    className="text-white text-3xl pointer-events-auto"
                   >
                     &#9776;
                   </button>
@@ -109,12 +87,12 @@ const Header = () => {
 
                   <a href="#home" className="flex items-center gap-3">
                     <div className="block">
-                      <h1 className="font-moderniz text-base text-[#00ffdc]">Robiya Jalilova</h1>
+                      <h1 className="font-moderniz text-base text-white">Robiya Jalilova</h1>
                       <p
                         className="font-moderniz text-[10px] text-[#000754]"
                         style={{
                           textShadow:
-                            '0.5px 0.5px 0 #00ffdc, -0.5px -0.5px 0 #00ffdc, 0.5px -0.5px 0 #00ffdc, -0.5px 0.5px 0 #00ffdc',
+                            '0.5px 0.5px 0 #FFFFFF, -0.5px -0.5px 0 #FFFFFF, 0.5px -0.5px 0 #FFFFFF, -0.5px 0.5px 0 #FFFFFF',
                         }}
                       >
                         Let's see the awesome Experience
@@ -153,20 +131,6 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Animasi gradient keyframes */}
-      <style>
-        {`
-          @keyframes gradientShadowMove {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-          }
-
-          html {
-            scroll-behavior: smooth;
-          }
-        `}
-      </style>
     </>
   );
 };

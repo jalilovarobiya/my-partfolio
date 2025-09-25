@@ -6,9 +6,7 @@ import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
-// import Robiya from '../../assets/images/Robiya.jpg';
 
-// 🧩 Ganti import glb menjadi path dari public/
 const cardGLB = '/models/card.glb';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
@@ -42,7 +40,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
 
   const { nodes, materials } = useGLTF(cardGLB);
-  const texture = useTexture(Robiya); // Robiya.jpg ni texture sifatida yuklash
+  const texture = useTexture(Robiya);
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
   const [dragged, drag] = useState(false);
   const [hovered, hover] = useState(false);
